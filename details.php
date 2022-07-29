@@ -1,29 +1,29 @@
 <?php
-require_once 'action/db_connect.php';
+require_once 'actions/db_connect.php';
 require_once 'components/boot.php';
 $sql = "SELECT * FROM properties WHERE id = $_GET[id]";
-$result = mysqli_query($conn, $sql);
+$result = mysqli_query($connect, $sql);
 $tbody = "";
 if (mysqli_num_rows($result) > 0) {
   while ($row = mysqli_fetch_assoc($result)) {
     $tbody .= "<br>
         <div class='mt-4 mb-4 row text-center justify-content-center animate__animated animate__fadeInLeft'>
-        <div class='card bg-dark' style='width: 18rem;'>
-  <img class='card-img-top' src='image/" . $row['image'] . "'>
-  <div class='card-body bg-dark'>
+        <div class='card' style='width: 45rem;'>
+  <img class='card-img-top' src='pictures/" . $row['image'] . "'>
+  <div class='card-body'>
     <h5 class='card-title'>" . $row['title'] . "</h5>
-    <p class='card-text'>Address:" . $row['address'] . "</p>
+    <p class='card-text'>Address: " . $row['address'] . "</p>
   </div>
   <ul class='list-group list-group-flush'>
-    <li class='list-group-item'>size:" . $row['size'] . "</li>
+    <li class='list-group-item'>size: " . $row['size'] . "m²</li>
     <li class='list-group-item'>rooms: " . $row['rooms'] . "</li>
     <li class='list-group-item'>city: " . $row['city'] . "</li>
-    <li class='list-group-item'>price" . $row['price'] . "</li>
+    <li class='list-group-item'>price: " . $row['price'] . "€</li>
     <li class='list-group-item'>reduction: " . $row['reduction'] . "</li>
     <div class='col-12'>
     
-    <a href='update.php?id=" . $row['id'] . "'><button class='button btn-warning' type='button'>Edit</button></a>
-    <a href='delete.php?id=" . $row['id'] . "'><button class='button btn-danger' type='button'>Delete</button></a>
+    <a href='update.php?id=" . $row['id'] . "'><button class='button btn btn-warning' type='button'>Edit</button></a>
+    <a href='delete.php?id=" . $row['id'] . "'><button class='button btn btn-danger' type='button'>Delete</button></a>
     </div>
     </ul>
   
@@ -49,7 +49,7 @@ if (mysqli_num_rows($result) > 0) {
 </head>
 
 <body class="bbc">
-    <?php require_once 'components/navigation.php' ?>
+    <?php require_once 'components/navbar.php' ?>
     <div class="container">
         <?php
         echo $tbody;

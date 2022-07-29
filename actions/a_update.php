@@ -2,7 +2,8 @@
 require_once 'db_connect.php';
 require_once 'file_upload.php';
 
-if ($_POST) {    
+if ($_POST) {   
+    $id = $_POST['id']; 
     $title = $_POST['title'];
     $size = $_POST['size'];
     $rooms = $_POST['rooms'];
@@ -16,9 +17,9 @@ if ($_POST) {
     $image = file_upload($_FILES['image']);//file_upload() called  
     if($image->error===0){
         ($_POST["image"]=="product.png")?: unlink("../pictures/$_POST[image]");           
-        $sql = "UPDATE properties SET title = '$title', price = $price, size = $size, rooms = $rooms, city = '$city', address = '$address', reduction = '$reduction' image = '$image->fileName' WHERE id = {$id}";
+        $sql = "UPDATE properties SET title = '$title', price = $price, size = $size, rooms = $rooms, city = '$city', address = '$address', reduction = '$reduction', image = '$image->fileName' WHERE id = {$id}";
     }else{
-        $sql = "UPDATE properties SET title = '$title', price = $price, size = $size, rooms = $rooms, city = '$city', address = '$address', reduction = '$reduction' image = '$image->fileName' WHERE id = {$id}";
+        $sql = "UPDATE properties SET title = '$title', price = $price, size = $size, rooms = $rooms, city = '$city', address = '$address', reduction = '$reduction', image = '$image->fileName' WHERE id = {$id}";
     }    
     if (mysqli_query($connect, $sql) === TRUE) {
         $class = "success";

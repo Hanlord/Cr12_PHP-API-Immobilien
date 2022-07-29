@@ -6,14 +6,14 @@ $result = mysqli_query($connect, $sql);
 $tbody = ''; //this variable will hold the body for the table
 if (mysqli_num_rows($result)  > 0) {
     while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-        $tbody .= "<div class='container col-lg-4 rows-col-md-2 rows-col-sm-1 d-flex justify-content-center animate__animated animate__fadeInLeft'>
+        $tbody .= "<div class='container col-lg-4 rows-col-md-2 rows-col-sm-1 d-flex justify-content-center animate__animated animate__fadeInLeft g-4'>
             <div class='card' style='width: 18rem;'>
-      <img src='image/" . $row['image'] . "' class='card-img-top' alt='...'>
-      <div class='card-body bg-dark'>
+      <img src='pictures/" . $row['image'] . "' class='card-img-top' alt='...'>
+      <div class='card-body'>
         <h5 class='card-title'>" . $row['title'] . "</h5>
-        <a href='details.php?id=" . $row['id'] . "'><button class='button btn-primary' type='button'>Show Details</button></a>
-        <a href='update.php?id=" . $row['id'] . "'><button class='button btn-warning' type='button'>Edit</button></a>
-        <a href='delete.php?id=" . $row['id'] . "'><button class='button btn-danger' type='button'>Delete</button></a>
+        <a href='details.php?id=" . $row['id'] . "'><button class='button btn btn-primary' type='button'>Show Details</button></a>
+        <a href='update.php?id=" . $row['id'] . "'><button class='button btn btn-warning' type='button'>Edit</button></a>
+        <a href='delete.php?id=" . $row['id'] . "'><button class='button btn btn-danger' type='button'>Delete</button></a>
       </div>
     </div>
           </div>
@@ -43,15 +43,6 @@ mysqli_close($connect);
         .img-thumbnail {
             width: 70px !important;
             height: 70px !important;
-        }
-
-        td {
-            text-align: left;
-            vertical-align: middle;
-        }
-
-        tr {
-            text-align: center;
         }
 
         .hero {
@@ -88,13 +79,13 @@ mysqli_close($connect);
             <a href="create.php"><button class='btn btn-primary' type="button">Add new Real Estate</button></a>
         </div>
         <p class='h2'>Our Objects:</p>
-        <div class="container">
+    </div>
+    <div class="container">
         <br>
         <div class="row rows-col-lg-4 rows-col-md-2 rows-col-sm-1 animate__animated animate__fadeInLeft">
           <?= $tbody ?>
         </div>
       </div>
-    </div>
     <div class="mt-5">
         <?php require_once 'components/footer.php' ?>
     </div>

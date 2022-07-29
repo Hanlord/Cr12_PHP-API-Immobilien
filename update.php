@@ -48,37 +48,37 @@ if ($_GET['id']) {
                 <table class="table">
                 <tr>
                     <th>Title</th>
-                    <td><input class='form-control' type="text" name="title" placeholder="Title" /></td>
+                    <td><input class='form-control' type="text" name="title" placeholder="Title" value="<?php echo $title ?>"/></td>
                 </tr>
                 <tr>
                     <th>Size</th>
-                    <td><input class='form-control' type="number" name="size" placeholder="size"/></td>
+                    <td><input class='form-control' type="number" name="size" placeholder="size" value="<?php echo $size ?>"/></td>
                 </tr>
                 <tr>
                     <th>Rooms</th>
-                    <td><input class='form-control' type="number" name="rooms" placeholder="rooms"/></td>
+                    <td><input class='form-control' type="number" name="rooms" placeholder="rooms" value="<?php echo $rooms ?>"/></td>
                 </tr>
                 <tr>
                     <th>City</th>
-                    <td><input class='form-control' type="text" name="city" placeholder="City" /></td>
+                    <td><input class='form-control' type="text" name="city" placeholder="City" value="<?php echo $city ?>"/></td>
                 </tr>
                 <tr>
                     <th>Price</th>
-                    <td><input class='form-control' type="number" name="price" placeholder="Price"/></td>
+                    <td><input class='form-control' type="number" name="price" placeholder="Price" value="<?php echo $price ?>"/></td>
                 </tr>
                 <tr>
                     <th>Address</th>
-                    <td><input class='form-control' type="text" name="address" placeholder="address" /></td>
+                    <td><input class='form-control' type="text" name="address" placeholder="address" value="<?php echo $address ?>"/></td>
                 </tr>
                 <tr>
                     <th>Picture</th>
-                    <td><input class='form-control' type="file" name="image" /></td>
+                    <td><input class='form-control' type="file" name="image" value="<?php echo $image ?>"/></td>
                 </tr>
                 <tr>
                     <th>Reduction</th>
                     <td>
                         <select class="form-select" name="reduction" aria-label="Default select example">
-                            <?php echo $animal; ?>
+                            <?php echo $title; ?>
                             <option value='yes'>yes</option>
                             <option value='no'>no</option>
                         </select>

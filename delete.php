@@ -49,7 +49,7 @@ if ($_GET['id']) {
             <h5>You have selected the data below:</h5>
             <table class="table w-75 mt-3">
                 <tr>
-                    <td><?php echo $name?></td>
+                    <td><?php echo $title?></td>
                 </tr>
             </table>
 
