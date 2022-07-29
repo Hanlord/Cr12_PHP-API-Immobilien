@@ -12,7 +12,10 @@
           <a class="nav-link text-light" aria-current="page" href="index.php">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-light" href="opportunity.php">Opportunity</a>
+          <a class="nav-link text-light" href="opportunity.html">Opportunity</a>
+        </li>
+        <li class="nav-item">
+        <input id="loadFile" type="submit" value="Opportunity" name='Submit' class="btn btn-success">
         </li>
       </ul>
     </div>

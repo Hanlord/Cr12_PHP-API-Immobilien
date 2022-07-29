@@ -3,9 +3,13 @@ require_once 'actions/db_connect.php';
 require_once 'components/boot.php';
 $sql = "SELECT * FROM properties WHERE id = $_GET[id]";
 $result = mysqli_query($connect, $sql);
+$lat = "";
+$ing = "";
 $tbody = "";
 if (mysqli_num_rows($result) > 0) {
   while ($row = mysqli_fetch_assoc($result)) {
+    $lat ="".$row['latitude']."";
+    $lng ="".$row['longitude']."";
     $tbody .= "<br>
         <div class='mt-4 mb-4 row text-center justify-content-center animate__animated animate__fadeInLeft'>
         <div class='card' style='width: 45rem;'>
@@ -46,6 +50,16 @@ if (mysqli_num_rows($result) > 0) {
     <link rel="stylesheet" href="css/style.scss">
     <?php require_once 'components/boot.php' ?>
     <title>Details</title>
+    <style>
+
+            #map {
+                margin: auto;
+                height: 35%;
+                width: 35%;
+
+            }
+
+        </style>
 </head>
 
 <body class="bbc">
@@ -55,7 +69,28 @@ if (mysqli_num_rows($result) > 0) {
         echo $tbody;
         ?>
     </div>
+    <div id="map"></div>
+    <br>
     <?php require_once 'components/footer.php' ?>
+    <script>
+        var map;
+        function initMap() {
+          var vienna = {
+            lat:  <?php echo $lat; ?>,
+            lng:   <?php echo $lng; ?>
+          };
+          map = new google.maps.Map(document.getElementById('map'), {
+            center: vienna,
+            zoom: 15
+          });
+          var pinpoint = new google.maps.Marker({
+                position: vienna,
+                map: map
+          });
+        }
+
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBtjaD-saUZQ47PbxigOg25cvuO6_SuX3M&callback=initMap" async defer></script>
 </body>
 
 </html>

@@ -77,6 +77,7 @@ mysqli_close($connect);
     <br>
     <div class="manageProduct w-75 mt-3">
         <div class='mb-3'>
+        <a href="displayAll.php" class="btn btn-success" target="_blank">API</a>
             <a href="create.php"><button class='btn btn-primary' type="button">Add new Real Estate</button></a>
         </div>
         <p class='h2'>Our Objects:</p>
