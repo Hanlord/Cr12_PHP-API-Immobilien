@@ -15,7 +15,7 @@
           <a class="nav-link text-light" href="opportunity.html">Opportunity</a>
         </li>
         <li class="nav-item">
-        <input id="loadFile" type="submit" value="Opportunity" name='Submit' class="btn btn-success">
+        <button class="btn btn-primary" onclick="getProp()">All Properties with API</button>
         </li>
       </ul>
     </div>

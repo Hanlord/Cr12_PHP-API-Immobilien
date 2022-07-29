@@ -6,6 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CR#12</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
     <style type="text/css">
         .manageProduct {
             margin: auto;
@@ -54,8 +58,8 @@
                 <a class="nav-link text-light" aria-current="page" href="index.php">Home</a>
               </li>
               <li class="nav-item">
-              <input id="loadFile" type="submit" value="Opportunity" name='Submit' class="btn btn-success">
-              </li>
+                <button class="btn btn-primary" onclick="getProp()">Click for Sales</button>
+                </li>
             </ul>
           </div>
         </div>
@@ -67,9 +71,6 @@
     <br>
 
     <div class="manageProduct w-75 mt-3">
-        <div class='mb-3'>
-            <a href="create.php"><button class='btn btn-primary' type="button">Add new Real Estate</button></a>
-        </div>
         <p class='h2'>Our Objects:</p>
     </div>
     <div class="container">
@@ -86,39 +87,29 @@
     </div>
 
     <script>
-        let btnLoad = document.getElementById('loadFile');
-        btnLoad.addEventListener('click', loadaj);
+        document.getElementById("content").addEventListener("click", getProp, false)
 
-        function loadaj(e) {
-            e.preventDefault();
-            let ajReq = new XMLHttpRequest();
-            let properties = document.getElementsById('content');
-            ajReq.open("GET", "displayAll.php");
-            ajReq.onload = function() {
-                if (ajReq.status == 200) {
-                    const property = JSON.parse(ajReq.responseText); //this is the entire object, could be this.responseXML instead
-                    for (let i = 0; i < properties.length; i++) {
-                properties.innerHTML += `<div class='container col-lg-4 rows-col-md-2 rows-col-sm-1 d-flex justify-content-center animate__animated animate__fadeInLeft g-4'>
-            <div class='card' style='width: 18rem;'>
-      <img src='${property.image}' class='card-img-top' alt='...'>
-      <div class='card-body'>
-        <h5 class='card-title'>${property.id}</h5>
-        <p>price: ${property.price}€</p>
-        <a href='details.php?id=${property.id}'><button class='button btn btn-primary' type='button'>Show Details</button></a>
-        <a href='update.php?id=${property.id}'><button class='button btn btn-warning' type='button'>Edit</button></a>
-        <a href='delete.php?id=${property.id}'><button class='button btn btn-danger' type='button'>Delete</button></a>
-      </div>
-    </div>
-          </div>
-
-               `
+function getProp() {
+    const property = new XMLHttpRequest();
+    property.open("GET", "displayAll2.php", true);
+    property.onload = function () {
+        if (this.status == 200) {
+            let properties = JSON.parse(this.responseText);
+            console.log(properties.data);
+            let output = '<h1 class="text-center text-success">Properties reduced Price</h1><div class="row row-col-12 justify-content-center g-4" >';
+            for (let result of properties.data) { 
+                output += "<div class='card text-center col-3' style='width: 18rem;'><img src='pictures/"+result.image+"' class='card-img-top'><div class='card-body'><h5 class='card-title text-center'>"+result.title+"</h5><p class='text-center'>address: "+result.address+"</p><p class='text-center'>size: "+result.size+"m²</p><p class='text-center'>rooms: "+result.rooms+"</p><p class='text-center'>city: "+result.city+"</p><p class='text-center'>price: "+result.price+"€</p><p class='card-text'>reduction: "+result.reduction+"</p></div></div>";
+                console.log(output);
             }
-                }
-            }
-            ajReq.send();
+            output +="</div>";
+            document.getElementById("content").innerHTML = output;
         }
+    }
+    property.send(); 
+}
 
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
 </body>
 
 </html>
