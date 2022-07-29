@@ -11,6 +11,7 @@ if (mysqli_num_rows($result)  > 0) {
       <img src='pictures/" . $row['image'] . "' class='card-img-top' alt='...'>
       <div class='card-body'>
         <h5 class='card-title'>" . $row['title'] . "</h5>
+        <p>price: " . $row['price'] . "€</p>
         <a href='details.php?id=" . $row['id'] . "'><button class='button btn btn-primary' type='button'>Show Details</button></a>
         <a href='update.php?id=" . $row['id'] . "'><button class='button btn btn-warning' type='button'>Edit</button></a>
         <a href='delete.php?id=" . $row['id'] . "'><button class='button btn btn-danger' type='button'>Delete</button></a>
