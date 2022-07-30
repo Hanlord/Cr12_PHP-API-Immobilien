@@ -106,12 +106,12 @@ function getProp() {
         if (this.status == 200) {
             let properties = JSON.parse(this.responseText);
             console.log(properties.data);
-            let output = '<h1 class="text-center text-primary">Properties</h1><div class="row row-col-12 justify-content-center g-4" >';
+            let print = '<h1 class="text-center text-primary">Properties</h1><div class="row row-col-12 justify-content-center g-4" >';
             for (let result of properties.data) { 
-                output += "<div class='card text-center col-3' style='width: 18rem;'><img src='pictures/"+result.image+"' class='card-img-top'><div class='card-body'><h5 class='card-title text-center'>"+result.title+"</h5><p class='text-center'>address: "+result.address+"</p><p class='text-center'>size: "+result.size+"m²</p><p class='text-center'>rooms: "+result.rooms+"</p><p class='text-center'>city: "+result.city+"</p><p class='text-center'>"+result.price+"€</p><p class='card-text'>reduction: "+result.reduction+"</p></div></div>";
-                console.log(output);
+                print += "<div class='card text-center col-3' style='width: 18rem;'><img src='pictures/"+result.image+"' class='card-img-top'><div class='card-body'><h5 class='card-title text-center'>"+result.title+"</h5><p class='text-center'>address: "+result.address+"</p><p class='text-center'>size: "+result.size+"m²</p><p class='text-center'>rooms: "+result.rooms+"</p><p class='text-center'>city: "+result.city+"</p><p class='text-center'>"+result.price+"€</p><p class='card-text'>reduction: "+result.reduction+"</p></div></div>";
+                console.log(print);
             }
-            output +="</div>";
+            print +="</div>";
             document.getElementById("content").innerHTML = output;
         }
     }
