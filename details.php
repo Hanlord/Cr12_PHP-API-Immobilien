@@ -62,7 +62,7 @@ if (mysqli_num_rows($result) > 0) {
         </style>
 </head>
 
-<body class="bbc">
+<body>
     <?php require_once 'components/navbar.php' ?>
     <div class="container">
         <?php
