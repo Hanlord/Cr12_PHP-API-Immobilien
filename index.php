@@ -112,7 +112,7 @@ function getProp() {
                 console.log(print);
             }
             print +="</div>";
-            document.getElementById("content").innerHTML = output;
+            document.getElementById("content").innerHTML = print;
         }
     }
     property.send(); 
