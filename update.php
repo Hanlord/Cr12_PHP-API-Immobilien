@@ -15,6 +15,8 @@ if ($_GET['id']) {
         $address = $data['address'];
         $reduction = $data['reduction'];
         $image = $data['image'];
+        $latitude = $data['latitude'];
+        $longitude = $data['longitude'];
     } else {
         header("location: error.php");
     }
@@ -75,12 +77,23 @@ if ($_GET['id']) {
                     <td><input class='form-control' type="file" name="image" value="<?php echo $image ?>"/></td>
                 </tr>
                 <tr>
+                    <th>Latitude</th>
+                    <td><input class='form-control' type="text" name="latitude" placeholder="latitude" value="<?php echo $latitude ?>"/></td>
+                </tr>
+                <tr>
+                    <th>Longitude</th>
+                    <td><input class='form-control' type="text" name="longitude" placeholder="longitude" value="<?php echo $longitude ?>"/></td>
+                </tr>
+                <tr>
                     <th>Reduction</th>
                     <td>
                         <select class="form-select" name="reduction" aria-label="Default select example">
-                            <?php echo $title; ?>
-                            <option value='yes'>yes</option>
-                            <option value='no'>no</option>
+                            <option <?php if($reduction=="yes"){
+                                echo "selected";
+                            }?> value='yes'>yes</option>
+                            <option <?php if($reduction=="no"){
+                                echo "selected";} ?>
+                                value='no'>no</option>
                         </select>
                     </td>
                 </tr>

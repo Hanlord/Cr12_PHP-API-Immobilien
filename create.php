@@ -49,10 +49,18 @@
                     <td><input class='form-control' type="file" name="image" /></td>
                 </tr>
                 <tr>
+                    <th>Latitude</th>
+                    <td><input class='form-control' type="text" name="latitude" placeholder="latitude" /></td>
+                </tr>
+                <tr>
+                    <th>Longitude</th>
+                    <td><input class='form-control' type="text" name="longitude" placeholder="longitude" /></td>
+                </tr>
+                <tr>
                     <th>Reduction</th>
                     <td>
                         <select class="form-select" name="reduction" aria-label="Default select example">
-                            <?php echo $animal; ?>
+                            
                             <option value='yes'>yes</option>
                             <option value='no'>no</option>
                         </select>

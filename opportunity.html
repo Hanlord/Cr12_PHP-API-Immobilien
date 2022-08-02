@@ -78,6 +78,9 @@
         <div class="row rows-col-lg-4 rows-col-md-2 rows-col-sm-1 animate__animated animate__fadeInLeft" id="content">
         </div>
       </div>
+      <tbody>
+
+      </tbody>
     <div class="mt-5">
         <div class="text-light text-center p-2 bg-dark">
     <footer>
@@ -90,24 +93,29 @@
         document.getElementById("content").addEventListener("click", getProp, false)
 
 function getProp() {
+  
     const property = new XMLHttpRequest();
-    property.open("GET", "displayAll2.php", true);
+    let content = document.getElementById("content");
+    property.open("GET", "displayAll.php", true);
     property.onload = function () {
         if (this.status == 200) {
-            let properties = JSON.parse(this.responseText);
-            console.log(properties.data);
-            let output = '<h1 class="text-center text-success">Properties reduced Price</h1><div class="row row-col-12 justify-content-center g-4" >';
-            for (let result of properties.data) { 
-                output += "<div class='card text-center col-3' style='width: 18rem;'><img src='pictures/"+result.image+"' class='card-img-top'><div class='card-body'><h5 class='card-title text-center'>"+result.title+"</h5><p class='text-center'>address: "+result.address+"</p><p class='text-center'>size: "+result.size+"m²</p><p class='text-center'>rooms: "+result.rooms+"</p><p class='text-center'>city: "+result.city+"</p><p class='text-center'>price: "+result.price+"€</p><p class='card-text'>reduction: "+result.reduction+"</p></div></div>";
-                console.log(output);
+            let homes = JSON.parse(this.responseText);
+            console.log(homes.data);
+            content.innerHTML = "";
+            for (let result of homes.data) { 
+              if (result.reduction === "no") {
+                console.log(result.reduction);
+          continue;
+    
+        }content.innerHTML += "<div class='card text-center col-3' style='width: 18rem;'><img src='pictures/"+result.image+"' class='card-img-top'><div class='card-body'><h5 class='card-title text-center'>"+result.title+"</h5><p class='text-center'>address: "+result.address+"</p><p class='text-center'>size: "+result.size+"m²</p><p class='text-center'>rooms: "+result.rooms+"</p><p class='text-center'>city: "+result.city+"</p><p class='text-center'>price: "+result.price+"€</p><p class='card-text'>reduction: "+result.reduction+"</p></div></div>";
+                
             }
-            output +="</div>";
-            document.getElementById("content").innerHTML = output;
+            // output +="</div>";
+            // document.getElementById("content").innerHTML += output;
         }
     }
     property.send(); 
 }
-
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
 </body>

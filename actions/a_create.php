@@ -10,6 +10,8 @@ if ($_POST) {
     $price = $_POST['price'];
     $address = $_POST['address'];
     $reduction = $_POST['reduction'];
+    $latitude = $_POST['latitude'];
+    $longitude = $_POST['longitude'];
     $uploadError = '';
     //this function exists in the service file upload.
     $image = file_upload($_FILES['image']);  
@@ -27,6 +29,9 @@ if ($_POST) {
             <td> $price </td>
             <td> $address </td>
             <td> $reduction </td>
+            <td> $latitude </td>
+            <td> $longitude </td>
+
             </tr></table><hr>";
         $uploadError = ($image->error !=0)? $image->ErrorMessage :'';
     } else {

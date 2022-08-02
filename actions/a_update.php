@@ -11,15 +11,17 @@ if ($_POST) {
     $price = $_POST['price'];
     $address = $_POST['address'];
     $reduction = $_POST['reduction'];
+    $latitude = $_POST['latitude'];
+    $longitude = $_POST['longitude'];
     //variable for upload pictures errors is initialised
     $uploadError = '';
 
     $image = file_upload($_FILES['image']);//file_upload() called  
     if($image->error===0){
         ($_POST["image"]=="product.png")?: unlink("../pictures/$_POST[image]");           
-        $sql = "UPDATE properties SET title = '$title', price = $price, size = $size, rooms = $rooms, city = '$city', address = '$address', reduction = '$reduction', image = '$image->fileName' WHERE id = {$id}";
+        $sql = "UPDATE properties SET title = '$title', price = $price, size = $size, rooms = $rooms, city = '$city', address = '$address', reduction = '$reduction',latitude = '$latitude',longitude ='$longitude', image = '$image->fileName' WHERE id = {$id}";
     }else{
-        $sql = "UPDATE properties SET title = '$title', price = $price, size = $size, rooms = $rooms, city = '$city', address = '$address', reduction = '$reduction', image = '$image->fileName' WHERE id = {$id}";
+        $sql = "UPDATE properties SET title = '$title', price = $price, size = $size, rooms = $rooms, city = '$city', address = '$address', reduction = '$reduction',latitude = '$latitude',longitude ='$longitude', image = '$image->fileName' WHERE id = {$id}";
     }    
     if (mysqli_query($connect, $sql) === TRUE) {
         $class = "success";
