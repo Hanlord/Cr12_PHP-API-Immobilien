@@ -21,7 +21,7 @@ if ($_POST) {
         ($_POST["image"]=="product.png")?: unlink("../pictures/$_POST[image]");           
         $sql = "UPDATE properties SET title = '$title', price = $price, size = $size, rooms = $rooms, city = '$city', address = '$address', reduction = '$reduction',latitude = '$latitude',longitude ='$longitude', image = '$image->fileName' WHERE id = {$id}";
     }else{
-        $sql = "UPDATE properties SET title = '$title', price = $price, size = $size, rooms = $rooms, city = '$city', address = '$address', reduction = '$reduction',latitude = '$latitude',longitude ='$longitude', image = '$image->fileName' WHERE id = {$id}";
+        $sql = "UPDATE properties SET title = '$title', price = $price, size = $size, rooms = $rooms, city = '$city', address = '$address', reduction = '$reduction',latitude = '$latitude',longitude ='$longitude' WHERE id = {$id}";
     }    
     if (mysqli_query($connect, $sql) === TRUE) {
         $class = "success";

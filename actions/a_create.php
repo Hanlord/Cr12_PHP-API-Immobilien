@@ -16,7 +16,7 @@ if ($_POST) {
     //this function exists in the service file upload.
     $image = file_upload($_FILES['image']);  
    
-    $sql = "INSERT INTO properties (title, size, rooms, city, price, address, image, reduction) VALUES ('$title', $size, $rooms, '$city', $price, '$address', '$image->fileName', '$reduction')";
+    $sql = "INSERT INTO properties (title, size, rooms, city, price, address, image, reduction, latitude,longitude) VALUES ('$title', $size, $rooms, '$city', $price, '$address', '$image->fileName', '$reduction',$latitude,$longitude)";
 
     if (mysqli_query($connect, $sql) === true) {
         $class = "success";

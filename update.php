@@ -74,7 +74,7 @@ if ($_GET['id']) {
                 </tr>
                 <tr>
                     <th>Picture</th>
-                    <td><input class='form-control' type="file" name="image" value="<?php echo $image ?>"/></td>
+                    <td><input class='form-control' type="file" name="image" value="<?php echo $pictures ?>"/></td>
                 </tr>
                 <tr>
                     <th>Latitude</th>
